@@ -5,10 +5,12 @@ export default function TextForm(props) {
   const changeToUpperCase = () => {
     // console.log("uppercase");
     setText(text.toUpperCase()); // here we are converting our text variable to uppercase.
+    props.showAlert("Text has been converted to UpperCase", "success");
   };
   const changeToLowerCase = () => {
     // console.log("uppercase");
     setText(text.toLowerCase()); // here we are converting our text variable to lowercase.
+    props.showAlert("Text has been converted to LowerCase", "success");
   };
 
   const changeToCaptialize = () => {
@@ -22,6 +24,7 @@ export default function TextForm(props) {
         " ";
     }
     setText(newText);
+    props.showAlert("Text has been converted to Captialize", "success");
   };
 
   const clearText = () => {
