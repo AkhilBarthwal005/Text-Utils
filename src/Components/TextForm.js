@@ -2,6 +2,12 @@ import React, { useState } from "react"; // here useState is our react hook for 
 // in this form we are going to learn the concept of state in function.
 
 export default function TextForm(props) {
+  const [text, setText] = useState(""); // this is react state here text is a varaible where the value is Enter your text is provided with the help of useState and it a default value to this variable and setText is function used to change the value of the text variable;
+  //now
+  // text = "abcde" this is wrong way of changeing the value of text variable.
+  // setText("abcde") it the correct way of doing this.
+  const [wordcount, setWordCount] = useState(0);
+
   const changeToUpperCase = () => {
     // console.log("uppercase");
     setText(text.toUpperCase()); // here we are converting our text variable to uppercase.
@@ -33,12 +39,12 @@ export default function TextForm(props) {
 
   const onChangeHandler = (event) => {
     // console.log("onchange handler");
-    setText(event.target.value); // here event.target.value gives us the current value of the text box and with helop of setText we are able to set the text into input field.
+    let newText = event.target.value;
+    setText(newText); // here event.target.value gives us the current value of the text box and with helop of setText we are able to set the text into input field.
+    let arr = newText.trim().split(" ");
+    if (arr[0] === "") setWordCount(0);
+    else setWordCount(arr.length);
   };
-  const [text, setText] = useState(""); // this is react state here text is a varaible where the value is Enter your text is provided with the help of useState and it a default value to this variable and setText is function used to change the value of the text variable;
-  //now
-  // text = "abcde" this is wrong way of changeing the value of text variable.
-  // setText("abcde") it the correct way of doing this.
 
   return (
     <>
@@ -87,7 +93,7 @@ export default function TextForm(props) {
       <div className="container">
         <h2>Text Summary</h2>
         <p>
-          {text.split(" ").length} No of Words and {text.length} No of Character
+          {wordcount} No of Words and {text.trim().length} No of Character
         </p>
         <h2>Preview</h2>
         <p>
