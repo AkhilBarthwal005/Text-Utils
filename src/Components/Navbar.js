@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom"; // replace anchor tag with link and herf with to it will help us to make fast routing without reloading the application.
+// import { Link } from "react-router-dom"; // replace anchor tag with link and herf with to it will help us to make fast routing without reloading the application.
 
 // this navbar used some props and props nothing but property used in this navbar which is passed by user when user use this navbar
 
@@ -10,10 +10,10 @@ export default function Navbar(props) {
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
     >
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <a className="navbar-brand" href="/">
           {/* we are use title here which is passed by the user */}
           {props.title}
-        </Link>
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -28,14 +28,14 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <a className="nav-link active" aria-current="page" href="/">
                 Home
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <a className="nav-link" href="/about">
                 {props.aboutText}
-              </Link>
+              </a>
             </li>
           </ul>
           <div
