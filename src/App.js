@@ -46,7 +46,7 @@ function App() {
         <Switch>
           {/* use exact path it will match only when you path is exactly matching not in the partial match */}
           <Route exact path="/about">
-            <About />
+            <About mode={mode} />
           </Route>
           <Route exact path="/">
             <TextForm

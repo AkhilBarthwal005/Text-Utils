@@ -1,36 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 // in this component we are using state variable to change the theme of the page.
 
-export default function About() {
-  const [theme, changeTheme] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-  const [btnText, changeBtnText] = useState("Enable Dark Mode");
-
-  const Change = () => {
-    let themeCheck = document.getElementById("themeCheck");
-    if (themeCheck.checked === true) {
-      //   console.log("true");
-      changeTheme({
-        color: "white",
-        backgroundColor: "black",
-      });
-      changeBtnText("Disable Dark Mode");
-    } else {
-      //   console.log("false");
-      changeTheme({
-        color: "black",
-        backgroundColor: "white",
-      });
-      changeBtnText("Enable Dark Mode");
-    }
-    // console.log(themeCheck.checked);
+export default function About(props) {
+  let theme = {
+    color: props.mode === "dark" ? "white" : "black",
+    backgroundColor: props.mode === "dark" ? "#11103c" : "white",
   };
 
   return (
-    <div className="container" style={theme}>
+    <div className="container py-3" style={theme}>
       <h1 className="my-3">About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -128,19 +107,6 @@ export default function About() {
               though the transition does limit overflow.
             </div>
           </div>
-        </div>
-      </div>
-      <div className="container my-3">
-        <div className="form-check form-switch">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id="themeCheck"
-            onClick={Change}
-          />
-          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-            <strong>{btnText}</strong>
-          </label>
         </div>
       </div>
     </div>

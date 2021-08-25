@@ -6,7 +6,6 @@ export default function TextForm(props) {
   //now
   // text = "abcde" this is wrong way of changeing the value of text variable.
   // setText("abcde") it the correct way of doing this.
-  const [wordcount, setWordCount] = useState(0);
 
   const changeToUpperCase = () => {
     // console.log("uppercase");
@@ -41,9 +40,6 @@ export default function TextForm(props) {
     // console.log("onchange handler");
     let newText = event.target.value;
     setText(newText); // here event.target.value gives us the current value of the text box and with helop of setText we are able to set the text into input field.
-    let arr = newText.trim().split(" ");
-    if (arr[0] === "") setWordCount(0);
-    else setWordCount(arr.length);
   };
 
   return (
@@ -67,24 +63,31 @@ export default function TextForm(props) {
         </div>
         <div className="container">
           <button
+            disabled={text.length === 0 ? true : false}
             className="btn btn-primary mx-1 my-2"
             onClick={changeToUpperCase}
           >
             Convert to UpperCase
           </button>
           <button
+            disabled={text.length === 0 ? true : false}
             className="btn btn-primary mx-1 my-2"
             onClick={changeToLowerCase}
           >
             Convert to LowerCase
           </button>
           <button
+            disabled={text.length === 0 ? true : false}
             className="btn btn-primary mx-1 my-2"
             onClick={changeToCaptialize}
           >
             Convert to Captialize
           </button>
-          <button className="btn btn-primary mx-1 my-2" onClick={clearText}>
+          <button
+            disabled={text.length === 0 ? true : false}
+            className="btn btn-primary mx-1 my-2"
+            onClick={clearText}
+          >
             Clear Text
           </button>
         </div>
@@ -93,7 +96,8 @@ export default function TextForm(props) {
       <div className="container">
         <h2>Text Summary</h2>
         <p>
-          {wordcount} No of Words and {text.trim().length} No of Character
+          {text.split(" ").filter((s) => s.length !== 0).length} No of Words and{" "}
+          {text.trim().split(/[ ]+/).join(" ").length} No of Character
         </p>
         <h2>Preview</h2>
         <p>
